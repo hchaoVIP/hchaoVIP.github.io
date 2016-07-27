@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background-color: #ccc;
+			}
+			#cvs{
+				box-shadow: 0 0 20px black;
+				display: block;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="cvs" width="800" height="800"></canvas>
+	</body>
+	<script type="text/javascript">
+		var cancvs = document.getElementById("cvs");
+		var cvs = cancvs.getContext('2d');
+		var arr = ['red','brown','yellow','yellowgreen','green','greenyellow','blue','darkblue'],r=0;
+		function round(){
+			r+=2;
+			cvs.clearRect(0,0,800,800);
+		for(var i =0;i<4;i++){
+			cvs.save();
+			cvs.beginPath();
+			cvs.translate(400,360);
+			cvs.rotate(Math.PI/180*(90*i+r));
+			//中心原点
+			cvs.fillStyle = 'white';
+			cvs.arc(0,0,20,0,Math.PI*2);
+			cvs.fill();
+//			散叶 里叶
+			cvs.moveTo(0,0);
+			cvs.quadraticCurveTo(200,150,0,350);
+			cvs.closePath();
+			cvs.fillStyle = arr[i+1];
+			cvs.fill();
+			//外叶
+			cvs.moveTo(0,0);
+			cvs.lineTo(0,350);
+			cvs.quadraticCurveTo(120,240,140,0);
+			cvs.lineTo(140,0);
+			cvs.closePath();
+			cvs.fillStyle = arr[i];
+			cvs.fill();
+			cvs.restore();
+		}
+			//画手柄;
+			cvs.globalCompositeOperation = "destination-over";
+			cvs.beginPath();
+			cvs.moveTo(400,360);
+			cvs.strokeStyle = 'white';
+			cvs.lineWidth = 20;
+			cvs.lineTo(400,800);
+			cvs.stroke();
+			window.requestAnimationFrame(round);
+		}
+		window.requestAnimationFrame(round);
+	</script>
+</html>
