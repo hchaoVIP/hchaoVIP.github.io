@@ -1,0 +1,15 @@
+#myCarousel{
+	margin: 50px 0 0 0;
+}
+.logo{
+	/*padding: 0; 是图片的时候这样调整logo */ 
+}
+#navbar-collapse ul{
+	margin-top:0 ;
+}
+.carousel-inner img{
+	margin:0 auto;
+}
+.carousel-control{
+	font-size: 100px;
+}
