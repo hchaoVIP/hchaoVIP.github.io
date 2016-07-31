@@ -204,16 +204,21 @@ body,html{
 }
 .info-content{
 	background-color: #fff;
-	margin-bottom: 1vh;
+	box-shadow: 2px 2px 3px #ccc;
+	margin-bottom: 3vh;	
 	
 }
 .info-content img{
 	margin: 12px 0;
 }
 .info-content h4{
+	
 	padding: 2px 0 0 0;
 	color: #333;
 	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .info-content p{
 	line-height: 1.6;
@@ -222,7 +227,23 @@ body,html{
 	padding-top: 2px;
 	padding: 0;
 }
+.info-right {
+	background-color: #fff;
+	box-shadow: 2px 2px 3px #ccc;
+	
+}
+.info-right blockquote{
+	margin: 0;
+	padding: 0;
+	
+}
+.info-right h4
+{
+	font-size: 16px;
+	color: #333;
+	padding: 2px 0 ;
 
+}
 
 
 
