@@ -25,3 +25,25 @@
 只要保持原作者署名和非商用，您可以自由地阅读、分享、修改本书。
 
 详细的法律条文请参见[创意共享](http://creativecommons.org/licenses/by-nc/4.0/)网站。
+
+listen 9090;
+    server_name www.crm-veryeast.cn;
+    #charset koi8-r;
+    root /Users/huangchao/Desktop/dfws-crm-new/web-crm/build;
+    #access_log  logs/host.access.log  main;
+    location /dfws-customer {
+        proxy_pass http://10.10.50.227:7880;
+
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Credentials' 'true';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Cookie $http_cookie;
+        proxy_redirect off;
+   }
+   location / {
+       try_files $uri $uri/ /index.html last;
+       index index.html index.htm;
+    }
